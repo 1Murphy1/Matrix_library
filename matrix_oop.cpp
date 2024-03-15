@@ -103,7 +103,7 @@ void Matrix::MulMatrix(const Matrix &other){
     for(int i=0; i < rows_; ++i){
         for(int j=0; j< other.cols_; ++j){
             for(int k = 0; k< cols_; ++k){
-                result.matrix_[i][j] += other.matrix_[i][k] * other.matrix_[k][j];
+                result.matrix_[i][j] += matrix_[i][k] * other.matrix_[k][j];
             }
             
         }
