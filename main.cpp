@@ -51,11 +51,31 @@ int main() {
         m4.PrintMatrix();
         cout<<endl;
         
+        Matrix m5(3, 3);
+        for(int i=0; i<m5.GetRows(); ++i){
+            for(int j=0; j<m5.GetCols(); ++j){
+                m5[i][j] = i*m5.GetCols()+j+1;
+            }
+        }
+        cout<<"Matrix5: "<<endl;
+        m5.PrintMatrix();
+        cout << endl;
+        
+        int countPassedTests = 0;
+        
         // Сложение матриц
         m1.SumMatrix(m2);
         cout << "Sum of matrices:" << endl;
         m1.PrintMatrix();
         cout << endl;
+        
+        if (m1 == m2) {
+            std::cout << "\nPASSED matrix summation test." << std::endl;
+            countPassedTests++;
+        } else {
+            std::cout << "\nFAILED matrix summation test." << std::endl;
+        }
+        cout<<endl;
 
         //Вычитание матриц
         m1.SubMatrix(m2);
@@ -77,11 +97,13 @@ int main() {
         cout<<endl;
         
         
-        m3.Transpose();
+        Matrix t = m1.Transpose();
         cout<<"Transposed result: "<<endl;
-        m3.PrintMatrix();
+        t.PrintMatrix();
         
-        
+        Matrix inv = m5.InverseMatrix();
+        cout<<"Inverse: "<<endl;
+        inv.PrintMatrix();
 
     } catch(const invalid_argument& e) {
         cerr << e.what() << endl;
